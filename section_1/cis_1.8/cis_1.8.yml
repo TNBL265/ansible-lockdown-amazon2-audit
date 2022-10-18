@@ -1,12 +1,10 @@
-{{ if .Vars.amazon2cis_run_heavy_tests }}
-  {{ if .Vars.amazon2cis_level1 }}
-    {{ if .Vars.amazon2cis_rule_1_8}}
+{{ if .Vars.amazon2cis_rule_1_8 }}
 command:
   security-updates:
     title: 1.8 | Ensure updates, patches, and additional security software are installed
-    exit-status: 0
-    timeout: {{ .Vars.timeout_ms }}
     exec: yum check-update
+    exit-status: 0
+    timeout: 60000
     stdout: 
     - "![0-9].* packages available"
     meta:
@@ -20,6 +18,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

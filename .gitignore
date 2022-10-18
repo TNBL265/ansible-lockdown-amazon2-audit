@@ -44,3 +44,4 @@ test_inv
 
 # ignore refactr pipeline test conf
 .github/
+.idea/

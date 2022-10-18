@@ -1,6 +1,4 @@
-{{ if .Vars.amazon2cis_run_heavy_tests }}
-  {{ if .Vars.amazon2cis_level2 }}
-    {{ if .Vars.amazon2cis_rule_6_1_1 }}
+{{ if .Vars.amazon2cis_rule_6_1_1 }}
 command:
   rpm_filecheck:
     title: 6.1.1 | Audit system file permissions
@@ -8,7 +6,7 @@ command:
     exit-status: 1
     stdout:
     - '0'
-    timeout: {{ .Vars.timeout_ms }}
+    timeout: 60000
     meta:
       server: 2
       workstation: NA
@@ -19,6 +17,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

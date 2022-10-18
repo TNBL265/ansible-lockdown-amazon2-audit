@@ -1,11 +1,9 @@
-{{ if .Vars.amazon2cis_level1 }}
+{{ if .Vars.amazon2cis_rule_1_2_1 }}
 command:
-  {{ if .Vars.amazon2cis_run_heavy_tests }}
-    {{ if .Vars.amazon2cis_rule_1_2_1 }}
   gpg_keys:
     title: 1.2.1 | Ensure GPG keys are configured
-    exit-status: 0
     exec: "rpm -q gpg-pubkey --qf '%{name}-%{version}-%{release} --> %{summary}\n'"
+    exit-status: 0
     meta:
       server: 1
       workstation: NA
@@ -17,6 +15,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

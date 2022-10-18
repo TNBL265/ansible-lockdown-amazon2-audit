@@ -1,0 +1,31 @@
+{{ if .Vars.amazon2cis_rule_3_5_1_1 }}
+command:
+  firewalld-installed:
+    title: 3.5.1.1 | Ensure firewalld is installed | package
+    exec: yum list installed | grep firewalld
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.1.1
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  firewalld-iptables-uninstalled:
+    title: 3.5.1.1 | Ensure firewalld is installed | iptables
+    exec: yum list installed | grep iptables
+    exit-status: 1
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 3.5.1.1
+      CISv8:
+        - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

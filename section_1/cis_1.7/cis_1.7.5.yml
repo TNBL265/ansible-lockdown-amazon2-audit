@@ -1,0 +1,14 @@
+{{ if .Vars.amazon2cis_rule_1_7_5 }}
+file:
+  /etc/issue:
+    title: 1.7.5 | Ensure permissions on /etc/issue are configured
+    exists: true
+    owner: root
+    group: root
+    mode: '0644'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 1.7.5
+{{ end }}

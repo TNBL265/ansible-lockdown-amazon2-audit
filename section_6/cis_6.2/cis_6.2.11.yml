@@ -1,10 +1,9 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_2_11 }}
+{{ if .Vars.amazon2cis_rule_6_2_11 }}
 command:
   home_dirs_exist:
     title: 6.2.11 | Ensure all users' home directories exist
     exec: "set -o pipefail; pwck -r | grep -P \"^user '(?P<user>.*)': directory '(?P<dir>.*)' does not exist$\""
-    timeout: {{ .Vars.timeout_ms }}
+    timeout: 60000
     exit-status: 2
     stdout:
     - '!/./'
@@ -18,5 +17,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

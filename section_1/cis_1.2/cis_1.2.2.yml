@@ -1,12 +1,10 @@
-{{ if .Vars.amazon2cis_level1 }}
+{{ if .Vars.amazon2cis_rule_1_2_2 }}
 command:
-  {{ if .Vars.amazon2cis_run_heavy_tests }}
-    {{ if .Vars.amazon2cis_rule_1_2_2 }}
   repos_configured:
-    title: 1.2.2 | Ensure Package manager repositories are configured
-    exit-status: 0
-    timeout: {{ .Vars.timeout_ms }}
+    title: 1.2.2 | Ensure package manager repositories are configured
     exec: "yum repolist"
+    exit-status: 0
+    timeout: 60000
     meta:
       server: 1
       workstation: NA
@@ -18,6 +16,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

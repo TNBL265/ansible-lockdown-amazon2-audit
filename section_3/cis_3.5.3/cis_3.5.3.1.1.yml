@@ -1,0 +1,31 @@
+{{ if .Vars.amazon2cis_rule_3_5_3_1_1 }}
+command:
+  iptables-installed:
+    title: 3.5.3.1.1 | Ensure iptables packages are installed
+    exec: yum list installed | grep iptables
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 3.5.3.1.1
+      CISv8:
+        - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  iptables-services-installed:
+    title: 3.5.3.1.1 | Ensure iptables packages are installed
+    exec: yum list installed | grep iptables-services
+    exit-status: 0
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 3.5.3.1.1
+      CISv8:
+        - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

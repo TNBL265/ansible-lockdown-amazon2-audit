@@ -1,12 +1,15 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_3_8 }}
-file:
-  /etc/ssh/sshd_config:
+{{ if .Vars.amazon2cis_rule_5_3_8 }}
+command:
+  ssh_rhosts:
     title: 5.3.8 | Ensure SSH IgnoreRhosts is enabled
-    exists: true
-    contains:
-    - '/IgnoreRhosts yes/'
-    - '!/^IgnoreRhosts no/'
+    exec: grep -Ei "IgnoreRhosts" /etc/ssh/sshd_config
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^(?i)IgnoreRhosts yes/'
+    - '!/^(?i)IgnoreRhosts no/'
     meta:
       server: 1
       workstation: NA
@@ -17,5 +20,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

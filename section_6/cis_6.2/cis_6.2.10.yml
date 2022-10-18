@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_2_10 }}
+{{ if .Vars.amazon2cis_rule_6_2_10 }}
 command:
   root_path_check:
     title: 6.2.10 | Ensure root PATH Integrity
@@ -17,5 +16,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

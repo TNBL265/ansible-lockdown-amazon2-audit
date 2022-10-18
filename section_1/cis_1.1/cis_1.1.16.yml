@@ -1,0 +1,16 @@
+{{ if .Vars.amazon2cis_rule_1_1_16 }}
+mount:
+  /var/log/audit:
+    title: 1.1.16 | Ensure separate partition exists for /var/log/audit
+    exists: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.16
+      CISv8:
+      - 8.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

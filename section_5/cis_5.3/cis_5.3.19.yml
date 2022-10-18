@@ -1,11 +1,14 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_3_19 }}
-file:
-  /etc/ssh/sshd_config:
+{{ if .Vars.amazon2cis_rule_5_3_19 }}
+command:
+  ssh_usepam:
     title: 5.3.19 | Ensure SSH PAM is enabled
-    exists: true
-    contains:
-    - '/^UsePAM yes/'
+    exec: grep -Ei "^usepam" /etc/ssh/sshd_config
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - 'UsePAM yes'
     - '!/^UsePAM no/'
     meta:
       server: 1
@@ -17,5 +20,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

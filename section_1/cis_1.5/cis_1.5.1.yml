@@ -1,10 +1,9 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_1_5_1 }}
+{{ if .Vars.amazon2cis_rule_1_5_1 }}
 command:
   core_dumps_limits:
     title: 1.5.1 | Ensure core dumps are restricted | security/limits.conf
-    exit-status: 0
     exec: 'grep -RE "\*.*hard.*core.*0" /etc/security/limits.*'
+    exit-status: 0
     stdout: 
     - '/^\/*.*\shard.*core.*0/'
     meta:
@@ -19,8 +18,8 @@ command:
       CISv8_IG3: true
   suid_dumpable_2:
     title: 1.5.1 | Ensure core dumps are restricted | sysctl.conf
-    exit-status: 0
     exec: 'grep "fs\.suid_dumpable" /etc/sysctl.conf /etc/sysctl.d/*'
+    exit-status: 0
     stdout: 
     - fs.suid_dumpable=0
     meta:
@@ -80,5 +79,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

@@ -1,6 +1,5 @@
-{{ if not .Vars.amazon2cis_selinux_disable }}
+{{ if .Vars.amazon2cis_rule_4_1_6 }}
 command:
-  {{ if .Vars.amazon2cis_rule_4_1_6 }}
   auditd_MAC_cnf:
     title: 4.1.6 | Ensure events that modify the system's Mandatory Access Controls are collected | Config
     exec: grep MAC-policy /etc/audit/rules.d/*.rules
@@ -35,5 +34,4 @@ command:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

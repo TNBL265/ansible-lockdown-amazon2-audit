@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_2_8 }}
+{{ if .Vars.amazon2cis_rule_6_2_8 }}
 command:
   no_dup_gid:
     title: 6.2.8 | Ensure no duplicate GIDs exist
@@ -17,5 +16,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

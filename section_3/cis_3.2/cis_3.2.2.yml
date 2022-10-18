@@ -1,0 +1,29 @@
+{{ if .Vars.amazon2cis_rule_3_2_2 }}
+kernel-param:
+  net.ipv4.conf.all.send_redirects:
+    title: 3.2.2 | Ensure packet redirect sending is disabled | all
+    value: '0'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.2.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  net.ipv4.conf.default.send_redirects:
+    title: 3.2.2 | Ensure packet redirect sending is disabled | default
+    value: '0'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.2.2
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

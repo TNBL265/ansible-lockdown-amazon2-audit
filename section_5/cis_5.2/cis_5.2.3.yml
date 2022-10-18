@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_2_3 }}
+{{ if .Vars.amazon2cis_rule_5_2_3 }}
 file:
   /etc/sudoers:
     title: 5.2.3 | Ensure sudo log file exists | config
@@ -34,5 +33,4 @@ command:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

@@ -1,12 +1,12 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_4_3 }}
-file:
-  /etc/pam.d/password-auth:
+{{ if .Vars.amazon2cis_rule_5_4_3 }}
+command:
+  /etc/pam.d/password-auth-hash:
     title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | password-auth
-    exists: true
-    contains:
-    - '/^password sufficient pam_unix.so sha512/'
-    - '!/^password sufficient pam_unix.so md5/'
+    exec: grep -E '^\s*password\s*sufficient\s*pam_unix.so' /etc/pam.d/password-auth
+    exit-status: 0
+    stdout:
+    - '/sha512/'
+    - '!/md5/'
     meta:
       server: 1
       workstation: NA
@@ -17,12 +17,13 @@ file:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  /etc/pam.d/system-auth:
+  /etc/pam.d/system-auth-hash:
     title: 5.4.3 | Ensure password hashing algorithm is SHA-512 | system-auth
-    exists: true
-    contains:
-    - '/^password sufficient pam_unix.so sha512/'
-    - '!/^password sufficient pam_unix.so md5/'
+    exec: grep -E '^\s*password\s*sufficient\s*pam_unix.so' /etc/pam.d/system-auth
+    exit-status: 0
+    stdout:
+      - '/sha512/'
+      - '!/md5/'
     meta:
       server: 1
       workstation: NA
@@ -33,5 +34,4 @@ file:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

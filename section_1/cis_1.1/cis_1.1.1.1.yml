@@ -1,0 +1,18 @@
+{{ if .Vars.amazon2cis_rule_1_1_1_1 }}
+command:
+  cramfs-mount:
+    title: 1.1.1.1 | Ensure mounting of cramfs filesystems is disabled
+    exec: "modprobe -n -v cramfs | grep -E '(cramfs|install)'"
+    exit-status: 0
+    stdout:
+    - install /bin/true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 1.1.1.1
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

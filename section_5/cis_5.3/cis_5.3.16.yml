@@ -1,12 +1,17 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_3_16 }}
-file:
-  /etc/ssh/sshd_config:
+{{ if .Vars.amazon2cis_rule_5_3_16 }}
+command:
+  sshd_clientalive:
     title: 5.3.16 | Ensure SSH Idle Timeout Interval is configured
-    exists: true
-    contains:
-    - '/^ClientAliveInterval {{ .Vars.amazon2cis_ssh_aliveinterval }}/'
-    - '/^ClientAliveCountMax {{ .Vars.amazon2cis_ssh_countmax }}/'
+    exec: grep -Ei "^ClientAlive" /etc/ssh/sshd_config
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - '/^ClientAliveInterval 300/'
+    - '/^ClientAliveCountMax 3/'
+    - '/ClientAliveInterval ([1-9]|[1-2][0-9][0-9]|300)/'
+    - '/ClientAliveCountMax [0-3]/'
     meta:
       server: 1
       workstation: NA
@@ -17,5 +22,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

@@ -1,0 +1,19 @@
+{{ if .Vars.amazon2cis_rule_3_5_1_5 }}
+command:
+  firewalld-default_zone:
+    title: 3.5.1.5 | Ensure firewalld default zone is set
+    exec: firewall-cmd --get-default-zone
+    exit-status: 0
+    stdout:
+    - 'public'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.1.5
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

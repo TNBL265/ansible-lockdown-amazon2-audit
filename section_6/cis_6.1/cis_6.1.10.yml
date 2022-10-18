@@ -1,6 +1,4 @@
-{{ if .Vars.amazon2cis_run_heavy_tests }}
-  {{ if .Vars.amazon2cis_level1 }}
-    {{ if .Vars.amazon2cis_rule_6_1_10 }}
+{{ if .Vars.amazon2cis_rule_6_1_10 }}
 command:
   world_writable:
     title: 6.1.10 | Ensure no world writable files exist
@@ -11,7 +9,7 @@ command:
       - 123
     stdout:
     - '!/./'
-    timeout: {{ .Vars.timeout_ms }}
+    timeout: 60000
     meta:
       server: 1
       workstation: NA
@@ -23,6 +21,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

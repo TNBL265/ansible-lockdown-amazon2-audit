@@ -91,7 +91,7 @@ fi
 
 os_maj_ver=`grep -w VERSION_ID= /etc/os-release | awk -F\" '{print $2}' | cut -d '.' -f1`
 audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
-audit_content_dir=$AUDIT_CONTENT_LOCATION/$audit_content_version
+audit_content_dir=$AUDIT_CONTENT_LOCATION/ansible-lockdown-amazon2-audit
 audit_vars=vars/${BENCHMARK}.yml
 
 # Set variable for format output

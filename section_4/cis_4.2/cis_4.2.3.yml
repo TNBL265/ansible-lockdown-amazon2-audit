@@ -1,10 +1,11 @@
 {{ if .Vars.amazon2cis_rule_4_2_3 }}
 command:
-  logfile_configured:
+  logrotate_configured:
     title: 4.2.3 | Ensure logrotate is configured
-    exec: echo "Warning - Ensure logrotate is configured according to site policy"
+    exec: echo "Manual - Ensure logrotate is configured according to site policy"
     exit-status: 0
-    stdout: ['!/./']
+    stdout:
+    - '!/^Manual/'
     meta:
       server: 1
       workstation: NA

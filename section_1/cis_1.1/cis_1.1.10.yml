@@ -1,0 +1,16 @@
+{{ if .Vars.amazon2cis_rule_1_1_10 }}
+mount:
+  /var:
+    title: 1.1.10 | Ensure separate partition exists for /var
+    exists: true
+    meta:
+      server: 2
+      workstation: NA
+      CIS_ID:
+      - 1.1.10
+      CISv8:
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

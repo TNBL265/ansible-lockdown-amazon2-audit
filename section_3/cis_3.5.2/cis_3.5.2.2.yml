@@ -1,0 +1,18 @@
+{{ if .Vars.amazon2cis_rule_3_5_2_2 }}
+command:
+  nftables-firewalld-uninstalled:
+    title: 3.5.2.2 | Ensure firewalld is either not installed or masked with nftables
+    exec: yum list installed | grep firewalld
+    exit-status: 1
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.2.2
+      CISv8:
+      - 4.4
+      - 4.8
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

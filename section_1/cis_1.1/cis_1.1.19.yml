@@ -1,0 +1,35 @@
+{{ if .Vars.amazon2cis_rule_1_1_19 }}
+command:
+  floppy_noexec:
+    title: 1.1.19 | Ensure removable media partitions include noexec option
+    exec: "if [ `grep -c -i floppy /etc/fstab` = 1 ] ; then if [ `grep -c -E 'floppy.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
+    exit-status: 0
+    stdout:
+      - Passed_Check
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 1.1.19
+      CISv8:
+        - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  cdrom_noexec:
+    title: 1.1.19 | Ensure removable media partitions include noexec option
+    exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*noexec' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
+    exit-status: 0
+    stdout:
+      - Passed_Check
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 1.1.19
+      CISv8:
+        - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

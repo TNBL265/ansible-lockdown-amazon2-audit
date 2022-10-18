@@ -1,11 +1,11 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_4_4 }}
-file:
-  /etc/pam.d/password-auth:
+{{ if .Vars.amazon2cis_rule_5_4_4 }}
+command:
+  /etc/pam.d/password-auth-limit:
     title: 5.4.4 | Ensure password reuse is limited | password-auth
-    exists: true
-    contains:
-    - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    exec: grep -E '^\s*password\s*required\s*pam_pwhistory.so' /etc/pam.d/password-auth
+    exit-status: 0
+    stdout:
+    - '/remember=[1-5]/'
     meta:
       server: 1
       workstation: NA
@@ -18,9 +18,10 @@ file:
       CISv8_IG3: true
   /etc/pam.d/system-auth:
     title: 5.4.4 | Ensure password reuse is limited | system-auth
-    exists: true
-    contains:
-    - '/^password.*required.*pam_pwhistory.so.*remember=\b(?:[1-5]\d+|5)\b/'
+    exec: grep -E '^\s*password\s*required\s*pam_pwhistory.so' /etc/pam.d/system-auth
+    exit-status: 0
+    stdout:
+      - '/remember=[1-5]/'
     meta:
       server: 1
       workstation: NA
@@ -31,5 +32,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

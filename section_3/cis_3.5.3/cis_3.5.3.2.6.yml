@@ -1,0 +1,17 @@
+{{ if .Vars.amazon2cis_rule_3_5_3_2_6 }}
+service:
+  iptables:
+    title: 3.5.3.2.6 | Ensure iptables is enabled and running
+    enabled: true
+    running: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.2.6
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3:
+{{ end }}

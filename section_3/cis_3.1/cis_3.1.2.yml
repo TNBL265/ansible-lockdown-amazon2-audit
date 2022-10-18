@@ -1,10 +1,9 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_3_1_2 }}
+{{ if .Vars.amazon2cis_rule_3_1_2 }}
 command:
   iwconfig:
     title: 3.1.2 | Ensure wireless interfaces are disabled
-    exit-status: 127
     exec: iwconfig
+    exit-status: 127
     meta:
       server: 1
       workstation: NA
@@ -15,5 +14,4 @@ command:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

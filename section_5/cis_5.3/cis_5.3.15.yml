@@ -1,14 +1,17 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_3_15 }}
-file:
-  /etc/ssh/sshd_config:
+{{ if .Vars.amazon2cis_rule_5_3_15 }}
+command:
+  sshd_KEX:
     title: 5.3.15 | Ensure only strong Key Exchange algorithms are used
-    exists: true
-    contains:
-    - {{ .Vars.amazon2cis_ssh_strong_kex }}
-    {{ range .Vars.amazon2cis_ssh_weak_kex }}
-    - '!/{{ . }}/'
-    {{ end }}
+    exec: grep -Ei "^KEX" /etc/ssh/sshd_config
+    exit-status:
+      or:
+      - 0
+      - 1
+    stdout:
+    - KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
+    - '!/diffie-hellman-group1-sha1/'
+    - '!/diffie-hellman-group14-sha1/'
+    - '!/diffie-hellman-group-exchange-sha1/'
     meta:
       server: 1
       workstation: NA
@@ -19,5 +22,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

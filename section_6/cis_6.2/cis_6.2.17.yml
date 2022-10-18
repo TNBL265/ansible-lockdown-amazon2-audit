@@ -1,10 +1,9 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_2_17 }}
+{{ if .Vars.amazon2cis_rule_6_2_17 }}
 command:
   dot_rhosts_files:
     title: 6.2.17 | Ensure no users have .rhosts files
     exec: 'find /home/ -name .rhosts'
-    timeout: {{ .Vars.timeout_ms }}
+    timeout: 60000
     exit-status: 0
     stdout: 
     - '!/./'
@@ -18,5 +17,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

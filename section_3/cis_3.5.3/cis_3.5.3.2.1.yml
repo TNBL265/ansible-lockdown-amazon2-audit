@@ -1,0 +1,24 @@
+{{ if .Vars.amazon2cis_rule_3_5_3_2_1 }}
+command:
+  iptables_loopback:
+    title: 3.5.3.2.1 | Ensure iptables loopback traffic is configured
+    exec: cat /etc/sysconfig/iptables
+    exit-status: 0
+    stdout:
+    - '/^-A INPUT -i lo -j ACCEPT/'
+    - '/^-A OUTPUT -o lo -j ACCEPT/'
+    - '/^-A INPUT -s 127.0.0.0/8 -j DROP/'
+    - '!/^-A INPUT -i lo -j DROP/'
+    - '!/^-A OUTPUT -o lo -j DROP/'
+    - '!/^-A INPUT -s 127.0.0.0/8 -j ACCEPT/'
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.2.1
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

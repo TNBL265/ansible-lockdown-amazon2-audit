@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_1_4 }}
+{{ if .Vars.amazon2cis_rule_6_1_4 }}
 command:
   shadow_perms:
     title: 6.1.4 | Ensure permissions on /etc/shadow are configured
@@ -17,5 +16,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

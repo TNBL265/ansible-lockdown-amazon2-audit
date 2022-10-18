@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_6_2_1 }}
+{{ if .Vars.amazon2cis_rule_6_2_1 }}
 file:
   /etc/passwd:
     title: 6.2.1 | Ensure accounts in /etc/passwd use shadowed passwords
@@ -17,6 +16,5 @@ file:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}
 

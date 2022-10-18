@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_2_1_16 }}
+{{ if .Vars.amazon2cis_rule_2_1_16 }}
 command:
   mta_installed:
     title: 2.1.16 | Ensure mail transfer agent is configured for local-only mode
@@ -16,5 +15,4 @@ command:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

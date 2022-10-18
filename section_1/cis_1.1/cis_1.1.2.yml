@@ -1,0 +1,17 @@
+{{ if .Vars.amazon2cis_rule_1_1_2 }}
+mount:
+  /tmp:
+    title: 1.1.2 | Ensure /tmp is configured
+    exists: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 
+      - 1.1.2
+      CISv8:
+      - 3.3
+      - 4.1
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

@@ -1,0 +1,19 @@
+{{ if .Vars.amazon2cis_rule_3_5_3_2_3 }}
+command:
+  iptables_open_ports:
+   title: 3.5.3.2.3 | Ensure iptables rules exist for all open ports
+   exec: bash section_3/cis_3.5.3/cis_3.5.3.2.3.sh
+   exit-status: 0
+   stdout:
+   - '!/^FAIL/'
+   meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+      - 3.5.3.2.3
+      CISv8:
+      - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

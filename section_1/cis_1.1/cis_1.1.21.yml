@@ -1,0 +1,35 @@
+{{ if .Vars.amazon2cis_rule_1_1_21 }}
+command:
+  floppy_nosuid:
+    title: 1.1.21 | Ensure nosuid option set on removable media partitions
+    exec: "if [ `grep -c -i floppy /etc/fstab` = 1 ] ; then if [ `grep -c -E 'floppy.*nosuid' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
+    exit-status: 0
+    stdout:
+    - Passed_Check
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 
+      - 1.1.21
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+  cdrom_nosuid:
+    title: 1.1.21 | Ensure nosuid option set on removable media partitions
+    exec: "if [ `grep -c -i cdrom /etc/fstab` = 1 ] ; then if [ `grep -c -E 'cdrom.*nosuid' /etc/fstab` -eq 1 ]; then echo FAIL; fi; else echo Passed_Check; fi"
+    exit-status: 0
+    stdout:
+    - Passed_Check
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID: 
+      - 1.1.21
+      CISv8:
+      - 3.3
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

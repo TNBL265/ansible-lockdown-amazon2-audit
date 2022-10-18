@@ -1,9 +1,7 @@
-{{ if not .Vars.amazon2cis_httpd_server }}
-  {{ if .Vars.amazon2cis_level1 }}
-    {{ if .Vars.amazon2cis_rule_2_1_9 }}
+{{ if .Vars.amazon2cis_rule_2_1_9 }}
 package:
   httpd:
-    title: 2.1.9 | Ensure HTTP Server is not installed
+    title: 2.1.9 | Ensure HTTP server is not installed
     installed: false
     meta:
       server: 1
@@ -15,6 +13,4 @@ package:
       CISv8_IG1: false
       CISv8_IG2: true
       CISv8_IG3: true
-    {{ end }}
-  {{ end }}
 {{ end }}

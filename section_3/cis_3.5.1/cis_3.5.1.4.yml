@@ -1,0 +1,17 @@
+{{ if .Vars.amazon2cis_rule_3_5_1_4 }}
+service:
+  firewalld:
+    title: 3.5.1.4 | Ensure firewalld service enabled and running
+    enabled: true
+    running: true
+    meta:
+      server: 1
+      workstation: NA
+      CIS_ID:
+        - 3.5.1.4
+      CISv8:
+        - 4.4
+      CISv8_IG1: true
+      CISv8_IG2: true
+      CISv8_IG3: true
+{{ end }}

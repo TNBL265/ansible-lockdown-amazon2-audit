@@ -1,11 +1,11 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_5_4_2 }}
-file:
-  /etc/pam.d/password-auth:
+{{ if .Vars.amazon2cis_rule_5_4_2 }}
+command:
+  /etc/pam.d/password-auth-lockout:
     title: 5.4.2 | Ensure lockout for failed password attempts is configured | password-auth
-    exists: true
-    contains:
-    - '/^account\s*required\s*pam_faillock.so/'
+    exec: grep -E '^\s*account\s*required' /etc/pam.d/password-auth
+    exit-status: 0
+    stdout:
+    - '/pam_faillock.so/'
     meta:
       server: 1
       workstation: NA
@@ -16,11 +16,12 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  /etc/pam.d/system-auth:
+  /etc/pam.d/system-auth-lockout:
     title: 5.4.2 | Ensure lockout for failed password attempts is configured | system-auth
-    exists: true
-    contains:
-    - '/^account\s*required\s*pam_faillock.so/'
+    exec: grep -E '^\s*account\s*required' /etc/pam.d/system-auth
+    exit-status: 0
+    stdout:
+      - '/pam_faillock.so/'
     meta:
       server: 1
       workstation: NA
@@ -31,5 +32,4 @@ file:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}

@@ -1,5 +1,4 @@
-{{ if .Vars.amazon2cis_level1 }}
-  {{ if .Vars.amazon2cis_rule_1_5_2 }}
+{{ if .Vars.amazon2cis_rule_1_5_2 }}
 command:
   kernel_nx:
     title: 1.5.2 | Ensure XD/NX support is enabled
@@ -17,5 +16,4 @@ command:
       CISv8_IG1: true
       CISv8_IG2: true
       CISv8_IG3: true
-  {{ end }}
 {{ end }}
